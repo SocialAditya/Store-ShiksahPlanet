@@ -321,7 +321,7 @@
   /* ── 15. Bottom Nav Active Tab on Scroll ── */
   const bottomNavItems = document.querySelectorAll('.bottom-nav-item[href^="#"]');
   function updateBottomNav() {
-    const sections = ['products'];
+    const sections = ['books'];
     let current = '';
     sections.forEach(id => {
       const el = document.getElementById(id);

@@ -1552,13 +1552,15 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 .float-wa {
   position: fixed;
   bottom: 28px; right: 28px;
-  z-index: 900;
+  z-index: 99999;
   width: 60px; height: 60px;
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   box-shadow: 0 6px 30px rgba(37,211,102,.5);
   transition: var(--transition);
   text-decoration: none;
+  opacity: 0;
+  transform: scale(0);
 }
 .float-wa:hover {
   transform: scale(1.12);
@@ -2147,6 +2149,366 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   .mobile-header-btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
+  }
+}
+
+/* ============================================================
+   OUR BOOKS SECTION
+   ============================================================ */
+.books-section {
+  background: linear-gradient(180deg, var(--blue-950) 0%, #060d24 100%);
+  padding: 100px 0 120px;
+  position: relative;
+  overflow: hidden;
+}
+
+.books-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.books-section .section-title {
+  color: var(--white);
+}
+
+.books-section .section-subtitle {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.books-section .section-tag {
+  background: rgba(37, 99, 235, 0.15);
+  border-color: rgba(37, 99, 235, 0.3);
+  color: #60a5fa;
+}
+
+.book-showcase {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ---- 3D Book Cover ---- */
+.book-cover-wrapper {
+  flex-shrink: 0;
+  perspective: 1200px;
+}
+
+.book-3d {
+  position: relative;
+  width: 320px;
+  height: 440px;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.book-3d:hover {
+  transform: rotateY(-15deg) rotateX(5deg) scale(1.03);
+}
+
+.book-3d img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow:
+    0 30px 60px rgba(0, 0, 0, 0.4),
+    0 0 40px rgba(37, 99, 235, 0.15),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.book-3d::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  right: -12px;
+  width: 12px;
+  height: calc(100% - 16px);
+  background: linear-gradient(90deg, #1a2a5e, #0f1a3a);
+  transform: rotateY(90deg);
+  transform-origin: left center;
+  border-radius: 0 4px 4px 0;
+}
+
+.book-badge {
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  background: linear-gradient(135deg, #f59e0b, #ef4444);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 20px;
+  z-index: 10;
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+  animation: badge-pulse 2s ease-in-out infinite;
+  letter-spacing: 0.5px;
+}
+
+@keyframes badge-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+/* ---- Book Details ---- */
+.book-details {
+  flex: 1;
+}
+
+.book-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(37, 99, 235, 0.15);
+  border: 1px solid rgba(37, 99, 235, 0.3);
+  color: #60a5fa;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  letter-spacing: 0.5px;
+}
+
+.book-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.book-subtitle {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 28px;
+  line-height: 1.5;
+}
+
+.book-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.book-feature {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+}
+
+.book-feature:hover {
+  background: rgba(37, 99, 235, 0.12);
+  border-color: rgba(37, 99, 235, 0.3);
+}
+
+.book-feature-icon {
+  font-size: 1rem;
+}
+
+/* Price */
+.book-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.book-price {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #34d399;
+}
+
+.book-price-mrp {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Buy Buttons */
+.book-buy-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.book-buy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.book-buy-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  transition: left 0.5s ease;
+}
+
+.book-buy-btn:hover::before {
+  left: 100%;
+}
+
+.book-buy-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.book-buy-btn svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+/* Amazon */
+.btn-buy-amazon {
+  background: linear-gradient(135deg, #ff9900, #e68a00);
+  color: #111;
+}
+.btn-buy-amazon:hover {
+  background: linear-gradient(135deg, #ffad33, #ff9900);
+  box-shadow: 0 8px 25px rgba(255, 153, 0, 0.35);
+}
+
+/* Flipkart */
+.btn-buy-flipkart {
+  background: linear-gradient(135deg, #2874f0, #1a5ec4);
+  color: #fff;
+}
+.btn-buy-flipkart:hover {
+  background: linear-gradient(135deg, #4a8ff7, #2874f0);
+  box-shadow: 0 8px 25px rgba(40, 116, 240, 0.35);
+}
+
+/* Store */
+.btn-buy-store {
+  background: transparent;
+  color: #60a5fa;
+  border-color: rgba(96, 165, 250, 0.4);
+}
+.btn-buy-store:hover {
+  background: rgba(37, 99, 235, 0.15);
+  border-color: #60a5fa;
+  box-shadow: 0 8px 25px rgba(37, 99, 235, 0.2);
+}
+
+/* Target Exams strip */
+.book-exams-strip {
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.book-exams-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 12px;
+}
+
+.book-exam-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.book-exam-tag {
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 900px) {
+  .book-showcase {
+    flex-direction: column;
+    text-align: center;
+    gap: 48px;
+  }
+
+  .book-3d {
+    width: 260px;
+    height: 360px;
+  }
+
+  .book-title {
+    font-size: 1.9rem;
+  }
+
+  .book-features {
+    justify-content: center;
+  }
+
+  .book-buy-buttons {
+    justify-content: center;
+  }
+
+  .book-exam-tags {
+    justify-content: center;
+  }
+
+  .book-price-row {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .books-section {
+    padding: 72px 0 80px;
+  }
+
+  .book-3d {
+    width: 220px;
+    height: 300px;
+  }
+
+  .book-title {
+    font-size: 1.6rem;
+  }
+
+  .book-buy-btn {
+    padding: 12px 20px;
+    font-size: 0.85rem;
+    width: 100%;
     justify-content: center;
   }
 }
