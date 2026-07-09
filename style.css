@@ -219,13 +219,14 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   z-index: 1000;
   background: rgba(12,26,64,.92);
   backdrop-filter: blur(16px) saturate(160%);
-  border-bottom: 1px solid rgba(255,255,255,.08);
+  border-bottom: 2px solid #f5c518;
+  box-shadow: 0 2px 20px rgba(245, 197, 24, 0.15);
   transition: var(--transition);
 }
 
 .navbar.scrolled {
   background: rgba(8,20,54,.97);
-  box-shadow: 0 4px 30px rgba(0,0,0,.3);
+  box-shadow: 0 4px 30px rgba(245, 197, 24, 0.2);
 }
 
 .nav-inner {
@@ -1990,14 +1991,14 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
     left: 0;
     right: 0;
     z-index: 9999;
-    background: rgba(8, 20, 54, 0.97);
+    background: linear-gradient(135deg, #f5c518, #e6b800);
     backdrop-filter: blur(16px) saturate(160%);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 2px solid rgba(255, 255, 255, 0.3);
     height: 64px;
     align-items: stretch;
     justify-content: space-around;
     padding: 0;
-    box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 -4px 30px rgba(245, 197, 24, 0.3);
   }
 
   .bottom-nav-item {
@@ -2007,9 +2008,9 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
     justify-content: center;
     gap: 4px;
     flex: 1;
-    color: rgba(255, 255, 255, 0.55);
+    color: #1a1a2e;
     font-size: 0.62rem;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 0.03em;
     text-transform: uppercase;
     text-decoration: none;
@@ -2022,14 +2023,14 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
   .bottom-nav-item svg {
     width: 22px;
     height: 22px;
-    stroke: currentColor;
+    stroke: #1a1a2e;
     transition: transform 0.2s ease;
   }
 
   .bottom-nav-item:hover,
   .bottom-nav-item:active {
-    color: var(--white);
-    background: rgba(255, 255, 255, 0.06);
+    color: #000;
+    background: rgba(255, 255, 255, 0.25);
   }
 
   .bottom-nav-item:hover svg {
@@ -2038,8 +2039,8 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 
   /* Active tab highlight */
   .bottom-nav-item.active {
-    color: var(--blue-400);
-    border-top-color: var(--blue-400);
+    color: #000;
+    border-top-color: #1a1a2e;
   }
 }
 
